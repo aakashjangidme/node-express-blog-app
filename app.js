@@ -5,10 +5,11 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const _ = require('lodash');
 const mongoose = require("mongoose");
+require('dotenv').config();
 
 //db stuff
 //run mongoatlas shell !
-const uri = "mongodb+srv://aakash-admin:skyyjaan@cluster0.xbhj9.mongodb.net/blogDB?retryWrites=true&w=majority";
+const uri = `mongodb+srv://aakash-admin:${process.env.MONGODB_PASS}@cluster0.xbhj9.mongodb.net/blogDB?retryWrites=true&w=majority`;
 mongoose.connect(uri, {
   useNewUrlParser: true
 });
@@ -128,3 +129,5 @@ const requestedPostId = req.params.postId;
 app.listen(3000, function() {
   console.log("Server started on port 3000");
 });
+
+// console.log("here",process.env.MONGODB_PASS );
